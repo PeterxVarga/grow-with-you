@@ -24,6 +24,7 @@ const config: Config = {
                 "text-quote": "rgba(26, 25, 23, 0.9)",
                 "text-quote-mark": "rgba(26, 25, 23, 0.75)",
                 "text-desc": "rgba(26, 25, 23, 0.7)",
+                "text-banner": "rgba(26, 25, 23, 0.8)",
 
                 // Háttér színek
                 "bg-cream": "#faf9f7",
