@@ -68,3 +68,123 @@
     @apply font-parkinsans;
   }
 }
+
+@layer utilities {
+  @keyframes hero-soft-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(18px) scale(0.99);
+    }
+
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes hero-soft-fade {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+    .hero-load-reveal {
+      opacity: 0;
+      animation: hero-soft-reveal 940ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      will-change: opacity, transform;
+    }
+
+    .hero-load-media,
+    .hero-load-fade {
+      animation: hero-soft-fade 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+      will-change: opacity;
+    }
+
+    .hero-delay-80 {
+      animation-delay: 80ms;
+    }
+
+    .hero-delay-150 {
+      animation-delay: 150ms;
+    }
+
+    .hero-delay-220 {
+      animation-delay: 220ms;
+    }
+
+    .hero-delay-260 {
+      animation-delay: 260ms;
+    }
+
+    .hero-delay-280 {
+      animation-delay: 280ms;
+    }
+
+    .hero-delay-360 {
+      animation-delay: 360ms;
+    }
+  }
+
+  [data-motion-active="true"] {
+    transition:
+      opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--motion-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  [data-motion-active="true"][data-motion-visible="true"] {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+
+  [data-motion-active="true"][data-motion-visible="false"][data-motion-variant="soft"] {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  [data-motion-active="true"][data-motion-visible="false"][data-motion-variant="hero"] {
+    opacity: 0;
+    transform: translateY(16px) scale(0.99);
+  }
+
+  [data-motion-active="true"][data-motion-visible="false"][data-motion-variant="cards"] {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  [data-motion-active="true"][data-motion-visible="false"][data-motion-variant="media"] {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+
+  [data-motion-active="true"][data-motion-visible="false"][data-motion-variant="footer"] {
+    opacity: 0;
+    transform: translateY(20px) scale(0.99);
+  }
+
+  @media (max-width: 767px), (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+      transition-delay: 0ms !important;
+    }
+
+    [data-motion-active],
+    [data-motion-visible] {
+      opacity: 1 !important;
+      transform: none !important;
+      will-change: auto !important;
+    }
+  }
+}
