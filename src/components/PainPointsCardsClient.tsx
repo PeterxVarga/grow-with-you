@@ -26,6 +26,16 @@ const outerBase = "relative w-full max-w-[520px] lg:w-[360px] lg:max-w-none lg:f
 
 const innerBase = "relative w-full lg:min-h-[440px] rounded-[24px] p-8 pb-16 flex flex-col gap-4 lg:transition-all lg:duration-300 lg:ease-out lg:hover:-translate-y-[4px] lg:hover:scale-[1.01] lg:hover:shadow-lg lg:will-change-transform cursor-default";
 
+const painPointsOpenedKey = "grow-with-you:pain-points-opened";
+
+function getInitialProgress() {
+  if (typeof window === "undefined") {
+    return 0;
+  }
+
+  return window.sessionStorage.getItem(painPointsOpenedKey) === "true" ? 1 : 0;
+}
+
 function CardBorder() {
   return (
     <div
@@ -37,13 +47,13 @@ function CardBorder() {
 
 export default function PainPointsCardsClient() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState(getInitialProgress);
   const [isCompactLayout, setIsCompactLayout] = useState(false);
-  const hasOpened = useRef(false);
+  const hasOpened = useRef(progress >= 1);
 
   // Referenciák a smooth (lerp) animációhoz
-  const targetProgress = useRef(0);
-  const currentProgress = useRef(0);
+  const targetProgress = useRef(progress);
+  const currentProgress = useRef(progress);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 1023px)');
@@ -86,6 +96,9 @@ export default function PainPointsCardsClient() {
         if (p >= 1) {
           hasOpened.current = true;
           targetProgress.current = 1;
+          currentProgress.current = 1;
+          window.sessionStorage.setItem(painPointsOpenedKey, "true");
+          setProgress(1);
         }
       }
     };
@@ -106,6 +119,7 @@ export default function PainPointsCardsClient() {
       if (hasOpened.current && currentProgress.current >= 0.999) {
         currentProgress.current = 1;
         targetProgress.current = 1;
+        window.sessionStorage.setItem(painPointsOpenedKey, "true");
         setProgress(1);
         return;
       }

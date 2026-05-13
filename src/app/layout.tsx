@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Parkinsans, Source_Sans_3, Caveat_Brush } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
+import { WaitlistProvider } from "@/components/waitlist/WaitlistProvider";
 
 // 1. Betűtípusok konfigurálása a design system alapján
 const parkinsans = Parkinsans({
@@ -39,8 +40,10 @@ export default function RootLayout({
       className={`${parkinsans.variable} ${sourceSans.variable} ${caveat.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg-cream text-text-main font-source-sans">
-        {children}
-        <Footer />
+        <WaitlistProvider>
+          {children}
+          <Footer />
+        </WaitlistProvider>
       </body>
     </html>
   );

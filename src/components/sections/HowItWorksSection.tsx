@@ -4,6 +4,7 @@ import step2Img from "../../../public/Step 2.jpg";
 import step3Img from "../../../public/Step 3.jpg";
 import { MotionReveal } from "@/components/motion/MotionReveal";
 import { SectionBadge } from "@/components/SectionBadge";
+import { WaitlistButton } from "@/components/waitlist/WaitlistButton";
 import {
   ArrowDoodle,
   ArrowDoodleBlue,
@@ -41,7 +42,7 @@ const HOW_IT_WORKS_STEPS = [
 
 export function HowItWorksSection() {
   return (
-    <section className="bg-bg-cream">
+    <section id="hogyan-mukodik" className="bg-bg-cream scroll-mt-10 md:scroll-mt-16">
       <div className="max-w-[1200px] mx-auto px-4 py-20 md:py-32 flex flex-col items-center">
         <MotionReveal
           variant="soft"
@@ -103,12 +104,12 @@ export function HowItWorksSection() {
         </div>
 
         <MotionReveal variant="soft" delay={120}>
-          <button
+          <WaitlistButton
             id="how-it-works-cta"
-            className="font-source-sans font-medium text-lg leading-6 text-text-main bg-brand-coral rounded-[100px] px-8 py-4 mt-20 md:mt-24 transition-colors duration-200 hover:bg-brand-coral-dark whitespace-nowrap"
+            className="font-source-sans font-medium text-lg leading-6 text-text-main bg-brand-coral rounded-[100px] px-8 py-4 mt-20 md:mt-24 transition-colors duration-200 hover:bg-brand-coral-dark whitespace-nowrap cursor-pointer"
           >
             Csatlakozom a várólistához
-          </button>
+          </WaitlistButton>
         </MotionReveal>
       </div>
     </section>

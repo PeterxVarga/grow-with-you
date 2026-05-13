@@ -66,7 +66,7 @@ export function FeaturesSection() {
         <MotionReveal variant="soft" delay={120}>
           <button
             id="features-cta-primary"
-            className="font-source-sans font-medium text-lg leading-6 text-text-main bg-brand-coral rounded-[100px] px-8 py-4 transition-colors duration-200 hover:bg-brand-coral-dark whitespace-nowrap"
+            className="font-source-sans font-medium text-lg leading-6 text-text-main bg-brand-coral rounded-[100px] px-8 py-4 transition-colors duration-200 hover:bg-brand-coral-dark whitespace-nowrap cursor-pointer"
           >
             Csatlakozom a várólistához
           </button>

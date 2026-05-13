@@ -1,7 +1,9 @@
 import Image from "next/image";
 import hero1Img from "../../../public/Hero 1.png";
 import hero2Img from "../../../public/Hero 2.png";
+import { ScrollToSectionButton } from "@/components/ScrollToSectionButton";
 import { SectionBadge } from "@/components/SectionBadge";
+import { WaitlistButton } from "@/components/waitlist/WaitlistButton";
 import {
   BlobBlue,
   BlobCoral,
@@ -124,20 +126,21 @@ export function HeroSection() {
         </div>
 
         <div className="hero-load-reveal hero-delay-220 flex flex-col sm:flex-row items-center gap-3 mt-2">
-          <button
+          <WaitlistButton
             id="hero-cta-primary"
-            className="font-source-sans font-medium text-lg leading-6 text-text-main bg-brand-coral rounded-[100px] border border-border-default px-8 py-4 transition-colors duration-200 hover:bg-brand-coral-dark whitespace-nowrap"
+            className="font-source-sans font-medium text-lg leading-6 text-text-main bg-brand-coral rounded-[100px] border border-border-default px-8 py-4 transition-colors duration-200 hover:bg-brand-coral-dark whitespace-nowrap cursor-pointer"
           >
             Csatlakozom a várólistához
-          </button>
+          </WaitlistButton>
 
           <div className="relative rounded-[100px]">
-            <button
+            <ScrollToSectionButton
+              targetId="hogyan-mukodik"
               id="hero-cta-secondary"
-              className="font-source-sans font-medium text-lg leading-6 text-text-main bg-transparent rounded-[100px] px-8 py-4 transition-colors duration-200 hover:bg-text-main/5 whitespace-nowrap"
+              className="block font-source-sans font-medium text-lg leading-6 text-text-main bg-transparent rounded-[100px] px-8 py-4 transition-colors duration-200 hover:bg-text-main/5 whitespace-nowrap cursor-pointer"
             >
               Hogyan működik?
-            </button>
+            </ScrollToSectionButton>
             <div
               aria-hidden="true"
               className="absolute inset-0 rounded-[100px] border border-border-default pointer-events-none"
